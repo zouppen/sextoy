@@ -1,0 +1,20 @@
+name:          vibra
+version:       0.0.1
+synopsis:      Library for a Chinese sex toy
+description:   Implementation of bit-banging interface to Chinese sex toy
+category:      Hardware
+license:       GPL-3
+license-file:  LICENSE
+author:        Joel Lehtonen
+maintainer:    joel.lehtonen@iki.fi
+build-type:    Simple
+cabal-version: >= 1.6
+
+library
+  hs-source-dirs:  src
+  exposed-modules: Ftdi
+  build-depends:
+    base >= 4 && < 5
+  c-sources:      src/ftdi.c
+  cc-options:     -std=gnu99
+  pkgconfig-depends: libftdi
