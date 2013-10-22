@@ -6,9 +6,7 @@ module Ftdi (FtdiHandle,new,free,onoff,function) where
 import Control.Applicative
 import Data.Word
 import Foreign.C
-import Foreign.Marshal.Array
 import Foreign.Ptr
-import System.IO
 
 data FtdiContext
 type FtdiHandle = Ptr FtdiContext
