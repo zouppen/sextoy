@@ -1,8 +1,8 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings, DeriveDataTypeable, RecordWildCards #-}
 module Main where 
 
-import Control.Monad.IO.Class
 import Control.Monad (replicateM_)
+import Control.Monad.IO.Class
 import Data.ByteString.Lazy.Char8 (ByteString)
 import Data.IORef -- Not good for threads but less dependecies than STM
 import Data.Text (Text,unpack)
@@ -10,12 +10,26 @@ import Data.Text.Read (decimal)
 import Network.HTTP.Types (ok200,badRequest400)
 import Network.Wai
 import Network.Wai.Handler.Warp (run)
+import System.Console.CmdArgs.Implicit
 
 import Ftdi
 
+data Args = Args { device :: String
+                 , port :: Int
+                 } deriving (Show, Data, Typeable)
+
+synopsis = Args { device = def &= argPos 0 &= typ "SERIAL"
+                , port = 3000 &= help "HTTP port to listen to (default: 3000)"
+                }
+           &= program "vibraserver"
+           &= summary "VibraServer v0.0.2"
+           &= help ("Listens to given HTTP port and sends commands to "++
+                    "Chinese vibrator device using FTDI TTL232R cable. "++
+                    "First argument must be FTDI device serial number which "++
+                    "can be obtained using `usb-devices` command."
+                   )
 main = do
-  let device = "FTFRXISS"
-  let port = 3000
+  Args{..} <- cmdArgs synopsis
   putStrLn $ "Connecting " ++ show device ++ " and listening to port " ++ show port
   h <- new device
   var <- newIORef False
@@ -29,7 +43,7 @@ app var h req = case (requestMethod req,pathInfo req) of
     liftIO $ writeIORef var False
     good "OK\n"
   ("POST",["on",skips]) -> do
-    liftIO $ unlessVar False True $ onoff h >> putStrLn "ajoalas"
+    liftIO $ unlessVar False True $ onoff h
     case validateSkips skips of
       Just s -> do
         liftIO $ onoff h
@@ -37,7 +51,7 @@ app var h req = case (requestMethod req,pathInfo req) of
         good "OK\n"
       Nothing -> bad "Mode must be a integer between 0 and 37, inclusive\n"
   ("POST",["off"]) -> do
-    liftIO $ unlessVar False False $ (putStrLn "ajetaan alas" >> onoff h)
+    liftIO $ unlessVar False False $ onoff h
     good "OK\n"
   ("POST",["function"]) -> do
     liftIO $ function h
