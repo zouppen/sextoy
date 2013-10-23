@@ -9,6 +9,8 @@ author:        Joel Lehtonen
 maintainer:    joel.lehtonen@iki.fi
 build-type:    Simple
 cabal-version: >= 1.6
+data-files:    index.html
+data-dir:      data
 
 library
   hs-source-dirs:  src
