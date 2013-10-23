@@ -1,5 +1,5 @@
 name:          vibra
-version:       0.0.1
+version:       0.0.2
 synopsis:      Library for a Chinese sex toy
 description:   Implementation of bit-banging interface to Chinese sex toy
 category:      Hardware
@@ -18,3 +18,19 @@ library
   c-sources:      src/ftdi.c
   cc-options:     -std=gnu99
   pkgconfig-depends: libftdi
+
+executable vibraserver
+  hs-source-dirs:  src
+  main-is:         Web.hs
+  ghc-options:     -threaded
+  c-sources:       src/ftdi.c
+  cc-options:      -std=gnu99
+  pkgconfig-depends: libftdi
+  build-depends:
+    base >= 4 && < 5,
+    bytestring >= 0.9.2.1,
+    http-types >= 0.6.9,
+    text >= 0.11.1.13,
+    transformers >= 0.2.2.0,
+    wai >= 1.1.0.1,
+    warp >= 1.1.0.1
