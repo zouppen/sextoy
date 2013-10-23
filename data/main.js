@@ -22,3 +22,7 @@ function next(event) {
     dirtyHttpPost("function");
 }
 
+function reset(event) {
+    dirtyHttpPost("reset");
+}
+
