@@ -9,7 +9,7 @@ author:        Joel Lehtonen
 maintainer:    joel.lehtonen@iki.fi
 build-type:    Simple
 cabal-version: >= 1.6
-data-files:    index.html
+data-files:    index.html main.js
 data-dir:      data
 
 library

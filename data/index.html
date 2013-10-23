@@ -9,6 +9,7 @@
         <title>Vibraattorin kauko-ohjaus</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="main.js"></script>
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     </head>
@@ -21,15 +22,12 @@
 	<h1>Vibraattorin kauko-ohjaus</h1>
         <p>Tee ystäväsi tyytyväiseksi</p>
 
-	<form name="input" action="on/0" method="post">
-	  <input type="submit" value="Päristele vähän" />
-	</form>
-	<form name="input" action="off" method="post">
-	  <input type="submit" value="Lopeta pärinä" />
-	</form>
-	<form name="input" action="function" method="post">
-	  <input type="submit" value="Seuraava efu" />
-	</form>
+	<label for="effect">Pärinätyyppi: </label>
+	<input id="effect" name="effect" type="range" min="0" max="37" value="0">
+
+	<input onclick="on()" type="submit" value="Valitse pärinä" />
+	<input onclick="off()" type="submit" value="Lopeta pärinä" />
+	<input onclick="next()" type="submit" value="Seuraava efu" />
 
     </body>
 </html>
