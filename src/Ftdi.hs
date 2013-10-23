@@ -52,8 +52,8 @@ failFilter h act = do
 
 -- |Pushes ON/OFF button.
 onoff :: FtdiHandle -> IO ()
-onoff h = failFilter h $ ftdi_pulldown h 0x01 -- Orange wire
+onoff h = failFilter h $ ftdi_pulldown h 0x02 -- Yellow wire
 
 -- |Pushes FUNCTION button.
 function :: FtdiHandle -> IO ()
-function h = failFilter h $ ftdi_pulldown h 0x02 -- Yellow wire
+function h = failFilter h $ ftdi_pulldown h 0x01 -- Orange wire

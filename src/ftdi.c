@@ -23,9 +23,7 @@
 #include <unistd.h>
 #include "ftdi.h"
 
-#define SCL 0x01 /* Orange wire */
-#define SDA 0x02 /* Yellow wire */
-#define DURATION 2000000 /* Command duration in milliseconds */
+#define DURATION 50000 /* Command duration in microseconds */
 
 /**
  * Validates that given expression or function returns zero.
@@ -70,9 +68,10 @@ int ftdi_bitbang_init(struct ftdi_context *c, const char * const serial)
 
 int ftdi_pulldown(struct ftdi_context *c, const uint8_t pins)
 {
-	// Pull down given pins, wait and release
+	// Pull down given pins, wait and release and wait again
 	FTDI_PULLDOWN(pins);
 	CHECK(usleep(DURATION));
 	FTDI_PULLDOWN(0);
+	CHECK(usleep(DURATION));
 	return BANG_OK;
 }
