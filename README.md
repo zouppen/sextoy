@@ -2,6 +2,23 @@
 
 # Chinese sex toy controller
 
+## What to buy
+
+- [http://www.intimategadgets.com/product/18-speed-vibration-body-massager-with-remote-controller--random-color-2xaaa-+-1xaaa-100551](18-Speed
+  Remote Control Vibration Egg)
+- [http://www.ftdichip.com/Products/Cables/USBTTLSerial.htm](FTDI
+  TTL-232R-5V) either the normal or wire ended version (-WE). Online
+  resellers include [https://www.elfaelektroniikka.fi/elfa3~fi_fi/elfa/init.do?item=73-206-73&toc=0](Elfa Distrelec) and [Mouser](http://fi.mouser.com/ProductDetail/FTDI/TTL-232R-5V-WE/?qs=sGAEpiMZZMtf8aSAtgR7DtM6b7hTwLVv).
+  The cable is so common that you may find it from your local electronic
+  component reseller.
+
+No extra components required! Just the cable and the vibrator and
+basic soldering skills required!
+
+## Modifying of the hardware
+
+TODO. Add some photos, too.
+
 ## Installation
 
 Installation is straight-forward with Debian derivates (like
