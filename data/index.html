@@ -9,7 +9,108 @@
         <title>Vibraattorin kauko-ohjaus</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="main.css" rel="stylesheet" type="text/css">
         <script src="main.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Nothing+You+Could+Do' rel='stylesheet' type='text/css'>
+        <style type="text/css">
+        body {
+        	background-color: #FFCBDB;
+        	color: #DE3163;
+        	font-family: 'Nothing You Could Do', cursive;
+        	font-weight: bold;
+			font-size: 16pt;
+			text-align: center;
+			
+			margin: 0;
+        }
+        
+        div#content {
+        	background-color: #fdd;
+        	color: #DE3163;
+        	width: 80%;
+        	margin: 2em auto;
+        	padding: 1em;
+        	-webkit-border-radius: 25px;
+			-moz-border-radius: 25px;
+			border-radius: 25px;
+			vertical-align: middle;
+			overflow: hidden;
+			height: 150px;
+        }
+        
+        h1 {
+        	font-family: 'Nothing You Could Do', cursive;
+        	color: #DE3163;
+        	font-size: 32pt;
+        	background-color: #fdd;
+        	-webkit-border-bottom-right-radius: 25px;
+			-webkit-border-bottom-left-radius: 25px;
+			-moz-border-radius-bottomright: 25px;
+			-moz-border-radius-bottomleft: 25px;
+			border-bottom-right-radius: 25px;
+			border-bottom-left-radius: 25px;
+			width: 80%;
+        	margin: 0 auto;
+        	padding: 1em;
+        }
+        
+        input {
+        	background-color: #DE3163;
+        	color: #fff;
+        	font-family: 'Nothing You Could Do', cursive;
+        	font-weight: bold;
+        	font-size: 16pt;
+        	border: 0;/*1px #fff solid;*/
+        	padding: 0.5em;
+        	margin: 0.3em;
+        	-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			border-radius: 3px;
+			width: 200px;
+        }
+        
+        input[type=range] {
+			-webkit-appearance: none;
+			background-color: #DE3163;
+			width: 80%;
+			height: 30px;
+			padding: 0;
+			vertical-align: middle;
+			margin-top: 15px;
+		}
+
+		input[type="range"]::-webkit-slider-thumb {
+			 -webkit-appearance: none;
+			background-color: #636363;
+			opacity: 0.5;
+			width: 15px;
+			height: 50px;
+		}
+        
+        div#napit {
+        	margin-top: 1em;
+        	float: right;
+        	clear: right;
+        	width: 50%;
+        }
+        
+        input#btnOn {
+	        background-color: #63DEDE;
+        }
+        
+        input#btnOff {
+        
+        }
+        
+        input#btnNext {
+	        background-color: #63DEDE;
+        }
+        
+        input#btnReset {
+        	background-color: #636363;
+        }
+        
+        </style>
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     </head>
@@ -18,17 +119,20 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <!-- Add your site or application content here -->
-	<h1>Vibraattorin kauko-ohjaus</h1>
-        <p>Tee ystäväsi tyytyväiseksi</p>
-
-	<label for="effect">Pärinätyyppi: </label>
-	<input id="effect" name="effect" type="range" min="0" max="37" value="0">
-
-	<input onclick="on()" type="submit" value="Valitse pärinä" />
-	<input onclick="off()" type="submit" value="Lopeta pärinä" />
-	<input onclick="next()" type="submit" value="Seuraava efu" />
-	<input onclick="reset()" type="submit" value="Fiksaa jumi" />
+	<h1>Tee ystäväsi tyytyväiseksi...</h1>
+	<div id="content">
+		<table border="0" cellspacing="10" style="height: 100%;">
+		<tr><td rowspan="2" style="width: 100%; vertical-align: middle;">
+			<label for="effect">Pärinätyyppi: </label><br />	
+			<input id="effect" name="effect" min="0" max="37" value="30" type="range">
+		</td>
+		<td>	<input onclick="on()" value="Valitse pärinä" type="submit" id="btnOn"></td>
+		<td>	<input onclick="next()" value="Seuraava efu" type="submit" id="btnNext"></td></tr>
+		<tr><td>	<input onclick="off()" value="Lopeta pärinä" type="submit" id="btnOff"></td>
+		<td>	<input onclick="reset()" value="Fiksaa jumi" type="submit" id="btnReset"></td>
+		</tr>
+		
+	</div>
 
     </body>
 </html>

@@ -44,6 +44,9 @@ app var h req = case (requestMethod req,pathInfo req) of
   ("GET",["main.js"]) -> do
     fn <- liftIO $ getDataFileName "main.js"
     return $ ResponseFile ok200 [("Content-Type", "application/javascript")] fn Nothing
+  ("GET",["main.css"]) -> do
+    fn <- liftIO $ getDataFileName "main.css"
+    return $ ResponseFile ok200 [("Content-Type", "text/css")] fn Nothing
   ("POST",["reset"]) -> do
     -- Reset state back to false if gets into desync
     liftIO $ onoff h
